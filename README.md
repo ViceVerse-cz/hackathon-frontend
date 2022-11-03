@@ -16,6 +16,10 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 
 Learn more about [Vite](https://vitejs.dev/guide/), [React](https://reactjs.org/), [WindiCSS](https://windicss.org/guide/) and [TypeScript](https://www.typescriptlang.org/docs/).
 
+## Design Files
+
+The design files are available on [Figma](https://www.figma.com/file/dRQJ4CmVVfLNyqt1avGxri/Untitled?node-id=1%3A4).
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Vite app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=vite&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
