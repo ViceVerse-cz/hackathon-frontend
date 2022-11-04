@@ -3,6 +3,7 @@ import { Map as Mapa, Overlay } from "pigeon-maps"
 import { maptiler } from 'pigeon-maps/providers'
 import { api } from "../../../../services/api";
 import { useEffect, useState } from "react";
+import { BuildingState } from "../../../../interfaces/building.interface";
 
 const MAPTILER_ACCESS_TOKEN = 'HZ3y7zy6K3OyLECvP79F'
 const MAP_ID = 'streets-v2-dark'
@@ -13,6 +14,7 @@ interface MapPointProps {
   _id: number;
   lat: number;
   long: number;
+  state: BuildingState;
 }
 
 
@@ -48,10 +50,10 @@ export default function Map() {
               anchor={[point.lat, point.long]}
               offset={[0, 0]}
             >
-              <MapPoint id={point._id} />
+              <MapPoint id={point._id} state={point.state} />
             </Overlay>
           ))
-          : <div>loading</div>}
+          : <div />}
         )
       </Mapa>
     </div>

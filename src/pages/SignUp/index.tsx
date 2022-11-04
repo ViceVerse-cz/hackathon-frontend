@@ -54,16 +54,16 @@ export default function SingUp() {
                 }}
             >
                 <ArrowLeft
-                    className="icon"
+                    className="cursor-pointer"
                     size={24}
                     color="#6366f1"
                     onClick={handleNavigateBack}
                 />
 
-                <h1 className='text-3xl text-white font-black'>Create a new account</h1>
+                <h1 className='text-3xl text-white font-black'>Vytvoř si účet</h1>
 
                 <div className='inline-flex mb-3 mt-3'>
-                    <div>
+                    <div className='w-1/2 mr-2'>
                         <label className="block mb-2 text-sm font-medium text-white">Jméno</label>
                         <input
                             type="text"
@@ -72,13 +72,13 @@ export default function SingUp() {
                             value={name}
                             onChange={e => setName(e.target.value)}
                             className={inputStyle}
-                            placeholder="John"
+                            placeholder="Adam"
                             required
                         />
                     </div>
 
                     <div className='ml-6'>
-                        <label className="block mb-2 text-sm font-medium text-white">Příjmení</label>
+                        <label className="block mb-2 text-sm font-medium text-white w-30">Příjmení</label>
                         <input
                             type="text"
                             id="surname"
@@ -86,7 +86,7 @@ export default function SingUp() {
                             value={surname}
                             onChange={e => setSurname(e.target.value)}
                             className={inputStyle}
-                            placeholder="Asshole2"
+                            placeholder="Novák"
                             required
                         />
                     </div>
@@ -122,7 +122,7 @@ export default function SingUp() {
 
                 <button
                     type="submit"
-                    className='w-full mt-8 py-2 text-sm font-medium text-white bg-indigo-500 rounded-lg hover:bg-indigo-600'
+                    className='w-full mt-8 py-2 text-sm font-medium text-white bg-indigo-500 rounded-md  hover:bg-indigo-600'
                 >
                     Registrovat se
                 </button>

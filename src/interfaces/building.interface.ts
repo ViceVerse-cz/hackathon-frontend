@@ -1,7 +1,7 @@
 export enum BuildingState {
-    ACTIVE = 1,
-    INACTIVE = 2,
-    PAUSED = 3
+    OPEN = 1,
+    BUSY = 2,
+    CLOSED = 3
 };
 
 export interface Building {
