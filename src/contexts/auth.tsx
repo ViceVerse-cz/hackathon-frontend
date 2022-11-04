@@ -1,18 +1,6 @@
 import React, { useState, useEffect, createContext, useContext } from 'react';
 import { api } from '../services/api';
-
-interface User {
-    name: string;
-    email: string;
-}
-
-interface AuthContextData {
-    signed: boolean;
-    user: User | null;
-    loading: boolean;
-    signIn(email: string, password: string): Promise<void>;
-    signOut(): void;
-}
+import { User, AuthContextData } from '../interfaces/user.interface';
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 

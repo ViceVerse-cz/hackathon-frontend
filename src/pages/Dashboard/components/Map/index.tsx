@@ -1,38 +1,59 @@
 import MapPoint from "./MapPoint";
-import { Map as Mapa, Marker } from "pigeon-maps"
+import { Map as Mapa, Overlay } from "pigeon-maps"
 import { maptiler } from 'pigeon-maps/providers'
+import { api } from "../../../../services/api";
+import { useEffect, useState } from "react";
 
-const MAPTILER_ACCESS_TOKEN = 'cNjsznbnTUWR75F9V8RY'
-const MAP_ID = '42ef8c6c-ee73-4de7-a73f-f5b7fdcaa831'
+const MAPTILER_ACCESS_TOKEN = 'HZ3y7zy6K3OyLECvP79F'
+const MAP_ID = 'streets-v2-dark'
 
 const maptilerProvider = maptiler(MAPTILER_ACCESS_TOKEN, MAP_ID)
 
-interface MapTilerProps {
-  x: number;
-  y: number;
-  z: number;
-  dpr: number | undefined;
+interface MapPointProps {
+  id: number;
+  lat: number;
+  lng: number;
 }
 
 
 export default function Map() {
-  const defaultProps = {
-    center: {
-      lat: 10.99835602,
-      lng: 77.01502627
-    },
-    zoom: 11
-  };
+  const [loading, setLoading] = useState(true)
+  const [points, setPoints] = useState<MapPointProps[]>([{ id: 1, lat: 49.2266539, lng: 17.6663328 }])
+
+  // useEffect(() => {
+  //   api.get('points').then(response => {
+  //     setPoints(response.data)
+  //     setLoading(false)
+  //   })
+  // }, [])
+
+
+  const defaultProps: [number, number] = [49.2266539, 17.6663328]
 
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <Mapa
         provider={maptilerProvider}
         dprs={[1, 2]} // this provider supports HiDPI tiles
-        height={200}
-        defaultCenter={[50.879, 4.6997]}
-        defaultZoom={11}
-      />
+        defaultCenter={defaultProps}
+        metaWheelZoom={false}
+        minZoom={9}
+        maxZoom={9}
+        defaultZoom={9}
+      >
+        {
+          points.map(point => (
+            <Overlay
+              key={String(point.id)}
+              anchor={[point.lat, point.lng]}
+              offset={[0, 0]}
+            >
+              <MapPoint id={point.id} />
+            </Overlay>
+          ))
+        }
+        )
+      </Mapa>
     </div>
   );
 }

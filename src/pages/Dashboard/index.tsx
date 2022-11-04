@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/auth';
 import Map from './components/Map';
+import Navbar from './components/Navbar';
 
 export default function Dashboard() {
     const history = useNavigate();
@@ -12,17 +13,9 @@ export default function Dashboard() {
     }
 
     return (
-        <div id="Dashboard">
+        <div className='flex flex-row h-screen'>
+            <Navbar user={user} handleSingOut={signOut}/>
             <Map />
-            <div className="content">
-
-                <h1>Welcome,</h1>
-                <h2>{user?.name}</h2>
-
-                <button type="button" onClick={handleSingOut}>
-                    Sing Out
-                </button>
-            </div>
         </div>
     );
 }
