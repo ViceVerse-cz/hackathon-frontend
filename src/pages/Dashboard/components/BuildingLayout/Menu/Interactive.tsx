@@ -1,5 +1,6 @@
-import { Canvas, ThreeElements, useFrame } from '@react-three/fiber';
+import { Canvas, Float16BufferAttributeProps, ThreeElements, useFrame } from '@react-three/fiber';
 import { useEffect, useRef, useState } from 'react';
+import { useBuilding } from '../../../../../contexts/building';
 
 interface IBoxProps {
     position: [number, number, number],
@@ -7,20 +8,9 @@ interface IBoxProps {
     onSelected: () => void
 }
 
-interface Mesh {
-    position: [number, number, number],
-    rotation: {
-        x: number,
-        y: number,
-        z: number
-    }
-    scale: [number, number, number],
-    material: any,
-    geometry: any
-}
 
 function Box(props: IBoxProps) {
-    const mesh = useRef() as React.MutableRefObject<Mesh>;
+    const mesh = useRef() as React.MutableRefObject<Float16BufferAttributeProps>;
 
     const [active, setActive] = useState(props.active)
 
@@ -56,12 +46,8 @@ function Box(props: IBoxProps) {
     )
 }
 
-interface ISeparatorProps {
-    position: [number, number, number],
-}
-
-function Separator(props: ISeparatorProps) {
-    const mesh = useRef() as React.MutableRefObject<Mesh>;
+function Separator(props: Float16BufferAttributeProps) {
+    const mesh = useRef() as React.MutableRefObject<Float16BufferAttributeProps>;
 
     // Animate box on every frame
     useFrame((state, _) => (
@@ -82,13 +68,16 @@ function Separator(props: ISeparatorProps) {
 
 export default () => {
     const [active, setActive] = useState<Number>(0);
+    const { building, loading } = useBuilding();
+
+
 
     return (
         <Canvas>
             <pointLight position={[0, 0, 5]} />
 
-            {
-                [...Array(1)].map((_, i) => (
+            {!loading ?
+                building.floors.map((_, i) => (
                     <>
                         <Box
                             key={i}
@@ -99,6 +88,8 @@ export default () => {
                         <Separator position={[0, i - 2, 0]} />
                     </>
                 ))
+                : null
+
             }
 
             <mesh position={[0, -2.56, 0]}

@@ -8,7 +8,7 @@ export interface Building {
     name: String,
     state: BuildingState,
     address: String,
-    floors: String,
+    floors: Floor[],
     lat: Number,
     long: Number
 }
@@ -22,3 +22,14 @@ export interface BuildingContextData {
     clearBuilding(): void
 }
 
+
+export enum FloorType {
+    WAREHOUSE = "Warehouse",
+    SHOP = "Shop"
+};
+
+export interface Floor {
+    type: FloorType,
+    shop: String,
+    warehouse: String
+};

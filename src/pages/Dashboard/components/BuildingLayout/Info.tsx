@@ -54,12 +54,12 @@ export default function Info({ building }: { building: Building }) {
                             :
                             <>
                                 <div className="animate-pulse bg-gray-400 w-3 h-3 rounded-full mr-2" />
-                                <Loading width="2.5rem" height="1rem" />
+                                <Loading width="3rem" height="1rem" />
                             </>
                         }
                     </div>
                 </div>
-                <div className="flex justify-center p-2 bg-[#7068E0] rounded-md ml-auto">
+                <div className="flex justify-center p-2 bg-[#7068E0] rounded-md ml-auto cursor-pointer transition duration-300 ease-in-out hover:bg-[#5A4DB8]">
                     <Pen size={18} color="#fff" />
                 </div>
 
