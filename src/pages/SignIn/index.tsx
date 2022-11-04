@@ -1,6 +1,7 @@
+import { useAuth } from '../../contexts/auth';
 import { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../contexts/auth';
+import { motion } from 'framer-motion';
 
 
 export default function SignIn() {
@@ -21,10 +22,23 @@ export default function SignIn() {
     }
 
     return (
-        <div className='bg-black w-full h-[100vh] gradient' id="SingIn">
+        <div 
+            className='bg-black w-full h-[100vh] gradient' 
+            id="SingIn"
+        >
             <span>&nbsp;</span>
 
-            <form className="content w-[500px] h-fit mt-52 ml-auto mr-auto bg-black  p-5 rounded-xl" onSubmit={handleSubmit}>
+            <motion.form 
+                className="content w-[500px] h-fit mt-52 ml-auto mr-auto bg-black  p-5 rounded-xl" 
+                onSubmit={handleSubmit}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ 
+                    duration: 0.5, 
+                    stiffness: 50,
+                    damping: 10 
+                }}
+            >
                 <h1 className='text-3xl text-white font-black'>Přihlášení</h1>
 
                 <div>
@@ -72,7 +86,7 @@ export default function SignIn() {
                         </Link>
                     </div>
                 </div>
-            </form>
+            </motion.form>
         </div>
     );
 }

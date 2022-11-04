@@ -3,12 +3,18 @@ import "../../../../assets/gradient.css";
 import { Pen } from "react-bootstrap-icons";
 import { useBuilding } from "../../../../contexts/building";
 import Loading from "../../../../components/Loading";
+import { motion } from "framer-motion";
 
 
 export default function Info({ building }: { building: Building }) {
     const { loading } = useBuilding();
     return (
-        <div className="flex flex-col w-auto h-[30%] bg-black rounded-xl mb-5 p-4 text-white gradient">
+        <motion.div 
+            className="flex flex-col w-auto h-[30%] bg-black rounded-xl mb-5 p-4 text-white gradient"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+        >
             <div className="flex flex-row justify-start items-start">
                 <div className="mr-3 w-23 h-23">
                     {!loading ?
@@ -91,6 +97,6 @@ export default function Info({ building }: { building: Building }) {
                 </div>
             </div>
 
-        </div>
+        </motion.div>
     )
 }

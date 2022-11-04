@@ -20,7 +20,6 @@ export default function Dashboard() {
             <Navbar user={user} handleSingOut={signOut} />
             {active ? <Building /> : <></>}
 
-
             <Map />
         </div>
     );
