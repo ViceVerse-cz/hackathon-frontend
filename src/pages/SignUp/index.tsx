@@ -4,10 +4,12 @@ import { ArrowLeft } from 'react-bootstrap-icons';
 
 import { api } from '../../services/api';
 
+
 export default function SingUp() {
     const history = useNavigate();
 
     const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -24,6 +26,7 @@ export default function SingUp() {
 
         const data = {
             name,
+            surname,
             email,
             password,
         };
@@ -42,14 +45,22 @@ export default function SingUp() {
                     onClick={handleNavigateBack}
                 />
 
-                <h1>Sing Up</h1>
+                <h1>Přihlášení</h1>
 
                 <div className="input-group">
-                    <p>Name</p>
+                    <p>Jméno</p>
                     <input
                         type="text"
                         onChange={(e) => setName(e.target.value)}
                         value={name}
+                    />
+                </div>
+                <div className="input-group">
+                    <p>Příjmení</p>
+                    <input
+                        type="text"
+                        onChange={(e) => setSurname(e.target.value)}
+                        value={surname}
                     />
                 </div>
 
@@ -63,7 +74,7 @@ export default function SingUp() {
                 </div>
 
                 <div className="input-group">
-                    <p>Password</p>
+                    <p>Heslo</p>
                     <input
                         type="password"
                         onChange={(e) => setPassword(e.target.value)}
@@ -71,7 +82,7 @@ export default function SingUp() {
                     />
                 </div>
 
-                <button type="submit">Sing Up</button>
+                <button type="submit">Registrovat se</button>
             </form>
         </div>
     );

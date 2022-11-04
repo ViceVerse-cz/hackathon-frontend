@@ -21,7 +21,7 @@ export default function SignIn() {
     return (
         <div id="SingIn">
             <form className="content" onSubmit={handleSubmit}>
-                <h1>Sing In</h1>
+                <h1>Přihlášení</h1>
 
                 <div className="input-group">
                     <p>Email</p>
@@ -33,7 +33,7 @@ export default function SignIn() {
                 </div>
 
                 <div className="input-group">
-                    <p>Password</p>
+                    <p>Heslo</p>
                     <input
                         type="password"
                         onChange={(e) => setPassword(e.target.value)}
@@ -41,9 +41,9 @@ export default function SignIn() {
                     />
                 </div>
 
-                <Link to="/signup"> Don't have an account? Sing up</Link>
+                <Link to="/signup">Vytvořit účet.</Link>
 
-                <button type="submit">Sing In</button>
+                <button type="submit">Přihlásit se</button>
             </form>
         </div>
     );
