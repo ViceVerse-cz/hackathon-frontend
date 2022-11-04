@@ -10,22 +10,22 @@ const MAP_ID = 'streets-v2-dark'
 const maptilerProvider = maptiler(MAPTILER_ACCESS_TOKEN, MAP_ID)
 
 interface MapPointProps {
-  id: number;
+  _id: number;
   lat: number;
-  lng: number;
+  long: number;
 }
 
 
 export default function Map() {
   const [loading, setLoading] = useState(true)
-  const [points, setPoints] = useState<MapPointProps[]>([{ id: 1, lat: 49.2266539, lng: 17.6663328 }])
+  const [points, setPoints] = useState<MapPointProps[]>([] as MapPointProps[])
 
-  // useEffect(() => {
-  //   api.get('points').then(response => {
-  //     setPoints(response.data)
-  //     setLoading(false)
-  //   })
-  // }, [])
+  useEffect(() => {
+    api.get('/api/building/fetch').then(response => {
+      setPoints(response.data.data.buildings)
+      setLoading(false)
+    })
+  }, [])
 
 
   const defaultProps: [number, number] = [49.2266539, 17.6663328]
@@ -41,17 +41,17 @@ export default function Map() {
         maxZoom={9}
         defaultZoom={9}
       >
-        {
+        {!loading ?
           points.map(point => (
             <Overlay
-              key={String(point.id)}
-              anchor={[point.lat, point.lng]}
+              key={String(point._id)}
+              anchor={[point.lat, point.long]}
               offset={[0, 0]}
             >
-              <MapPoint id={point.id} />
+              <MapPoint id={point._id} />
             </Overlay>
           ))
-        }
+          : <div>loading</div>}
         )
       </Mapa>
     </div>

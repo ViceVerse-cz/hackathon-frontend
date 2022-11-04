@@ -1,11 +1,15 @@
 import { AuthProvider } from "./contexts/auth";
+import { BuildingProvider } from "./contexts/building";
 import Routes from "./routes";
 
 function App() {
 
   return (
     <AuthProvider>
-      <Routes />
+
+      <BuildingProvider>
+        <Routes />
+      </BuildingProvider>
     </AuthProvider>
   );
 }

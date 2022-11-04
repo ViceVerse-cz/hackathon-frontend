@@ -1,6 +1,6 @@
 import React, { useState, useEffect, createContext, useContext } from 'react';
 import { api } from '../services/api';
-import { User, AuthContextData } from '../interfaces/user.interface';
+import { User, AuthContextData} from '../interfaces/user.interface';
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
