@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/auth';
+import Map from './components/Map';
 
 export default function Dashboard() {
     const history = useNavigate();
@@ -12,6 +13,7 @@ export default function Dashboard() {
 
     return (
         <div id="Dashboard">
+            <Map />
             <div className="content">
 
                 <h1>Welcome,</h1>
