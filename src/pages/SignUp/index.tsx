@@ -17,8 +17,9 @@ export default function SingUp() {
         history('/');
     }
 
-    const inputStyle = `bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 bg-gray-700
-    border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500`;
+
+    const inputStyle = `bg-dark-500 border-gray-300 text-sm rounded-md border-dark-50 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-indigo-500 w-full`;
+
 
     async function handleSubmit(e: FormEvent) {
         e.preventDefault();
@@ -39,10 +40,10 @@ export default function SingUp() {
     }
 
     return (
-        <div className='bg-slate-700 w-full h-[100vh]' id="SingUp">
+        <div className='bg-black w-full h-[100vh] gradient' id="SingUp">
             <span>&nbsp;</span>
 
-            <form className="content w-[500px] h-fit mt-52 ml-auto mr-auto bg-[#1e293b] p-5 rounded-lg" onSubmit={handleSubmit}>
+            <form className="content w-[500px] h-fit mt-52 ml-auto mr-auto bg-black p-5 rounded-xl" onSubmit={handleSubmit}>
                 <ArrowLeft
                     className="icon"
                     size={24}
@@ -50,33 +51,33 @@ export default function SingUp() {
                     onClick={handleNavigateBack}
                 />
 
-                <h1 className='text-3xl text-white'>Create a new account</h1>
+                <h1 className='text-3xl text-white font-black'>Create a new account</h1>
 
                 <div className='inline-flex mb-3 mt-3'>
                     <div>
-                        <label className="block mb-2 text-sm font-medium text-white">First name</label>
-                        <input 
-                            type="text" 
-                            id="name" 
+                        <label className="block mb-2 text-sm font-medium text-white">Jméno</label>
+                        <input
+                            type="text"
+                            id="name"
                             name='name'
                             value={name}
                             onChange={e => setName(e.target.value)}
-                            className={inputStyle} 
-                            placeholder="John" 
+                            className={inputStyle}
+                            placeholder="John"
                             required
                         />
                     </div>
 
                     <div className='ml-6'>
-                        <label className="block mb-2 text-sm font-medium text-white">Surname</label>
-                        <input 
-                            type="text" 
-                            id="surname" 
+                        <label className="block mb-2 text-sm font-medium text-white">Příjmení</label>
+                        <input
+                            type="text"
+                            id="surname"
                             name='surname'
                             value={surname}
                             onChange={e => setSurname(e.target.value)}
-                            className={inputStyle} 
-                            placeholder="Asshole2" 
+                            className={inputStyle}
+                            placeholder="Asshole2"
                             required
                         />
                     </div>
@@ -84,35 +85,35 @@ export default function SingUp() {
 
                 <div>
                     <label className="block mb-2 text-sm mt-3 font-medium text-white">Email</label>
-                    <input 
-                        type="email" 
-                        id="email" 
+                    <input
+                        type="email"
+                        id="email"
                         name='email'
                         value={email}
                         onChange={e => setEmail(e.target.value)}
-                        className={inputStyle} 
-                        placeholder="example@gmail.com" 
+                        className={inputStyle}
+                        placeholder="example@gmail.com"
                         required
                     />
                 </div>
 
                 <div>
-                    <label className="block mb-2 mt-3 text-sm font-medium text-white">Password</label>
-                    <input 
-                        type="password" 
-                        id="password" 
+                    <label className="block mb-2 mt-3 text-sm font-medium text-white">Heslo</label>
+                    <input
+                        type="password"
+                        id="password"
                         name='password'
-                        className={inputStyle} 
+                        className={inputStyle}
                         value={password}
                         onChange={e => setPassword(e.target.value)}
-                        placeholder="********" 
+                        placeholder="********"
                         required
                     />
                 </div>
 
-                <button 
+                <button
                     type="submit"
-                    className='w-full mt-8 py-2 text-sm font-medium text-white bg-indigo-500 rounded-lg hover:bg-blue-600'
+                    className='w-full mt-8 py-2 text-sm font-medium text-white bg-indigo-500 rounded-lg hover:bg-indigo-600'
                 >
                     Registrovat se
                 </button>
