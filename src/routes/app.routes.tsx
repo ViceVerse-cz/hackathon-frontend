@@ -4,7 +4,7 @@ import Dashboard from '../pages/Dashboard';
 export default function AuthRoutes() {
     const routes = [
         {
-            path: '/dashboard',
+            path: '/',
             element: <Dashboard />
         }
     ];

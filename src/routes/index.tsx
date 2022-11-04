@@ -6,7 +6,6 @@ import AuthRoutes from './auth.routes';
 
 export default function Routes() {
     const { signed, loading } = useAuth();
-    console.log(signed, loading);
 
-    return signed ? <AppRoutes /> : <AuthRoutes />;
+    return loading ? <div >loading</div> : signed ? <AppRoutes /> : <AuthRoutes />;
 }

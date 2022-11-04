@@ -41,13 +41,14 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
 
     async function signIn(email: string, password: string) {
         const response = await api.post('/api/employee/login', { email, password });
+        const data = response.data.data;
 
-        setUser(response.data.user);
+        setUser(data.employee);
 
-        api.defaults.headers['Authorization'] = `${response.data.token}`;
+        api.defaults.headers['Authorization'] = `${data.token}`;
 
-        localStorage.setItem('user', JSON.stringify(response.data.user));
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(data.employee));
+        localStorage.setItem('token', data.token);
     }
 
     function signOut() {
