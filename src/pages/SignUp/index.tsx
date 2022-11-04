@@ -1,9 +1,8 @@
-import { useState, FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'react-bootstrap-icons';
-
+import { useNavigate } from 'react-router-dom';
+import { useState, FormEvent } from 'react';
 import { api } from '../../services/api';
-
+import { motion } from 'framer-motion';
 
 export default function SingUp() {
     const history = useNavigate();
@@ -43,7 +42,17 @@ export default function SingUp() {
         <div className='bg-black w-full h-[100vh] gradient' id="SingUp">
             <span>&nbsp;</span>
 
-            <form className="content w-[500px] h-fit mt-52 ml-auto mr-auto bg-black p-5 rounded-xl" onSubmit={handleSubmit}>
+            <motion.form 
+                className="content w-[500px] h-fit mt-52 ml-auto mr-auto bg-black p-5 rounded-xl" 
+                onSubmit={handleSubmit}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ 
+                    duration: 0.5, 
+                    stiffness: 50,
+                    damping: 10 
+                }}
+            >
                 <ArrowLeft
                     className="cursor-pointer"
                     size={24}
@@ -117,7 +126,7 @@ export default function SingUp() {
                 >
                     Registrovat se
                 </button>
-            </form>
+            </motion.form>
         </div>
     );
 }
