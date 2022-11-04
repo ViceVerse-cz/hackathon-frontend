@@ -2,14 +2,7 @@ import { Canvas, Float16BufferAttributeProps, ThreeElements, useFrame } from '@r
 import { useEffect, useRef, useState } from 'react';
 import { useBuilding } from '../../../../../contexts/building';
 
-interface IBoxProps {
-    position: [number, number, number],
-    active: boolean,
-    onSelected: () => void
-}
-
-
-function Box(props: IBoxProps) {
+function Box(props: Float16BufferAttributeProps) {
     const mesh = useRef() as React.MutableRefObject<Float16BufferAttributeProps>;
 
     const [active, setActive] = useState(props.active)
