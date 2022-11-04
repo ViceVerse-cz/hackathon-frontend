@@ -1,8 +1,11 @@
 import MapPoint from "./MapPoint";
 import { Map as Mapa, Marker } from "pigeon-maps"
+import { maptiler } from 'pigeon-maps/providers'
 
-const MAPTILER_ACCESS_TOKEN = 'HZ3y7zy6K3OyLECvP79F'
+const MAPTILER_ACCESS_TOKEN = 'cNjsznbnTUWR75F9V8RY'
 const MAP_ID = '42ef8c6c-ee73-4de7-a73f-f5b7fdcaa831'
+
+const maptilerProvider = maptiler(MAPTILER_ACCESS_TOKEN, MAP_ID)
 
 interface MapTilerProps {
   x: number;
@@ -10,10 +13,6 @@ interface MapTilerProps {
   z: number;
   dpr: number | undefined;
 }
-function mapTiler({ x, y, z, dpr }: any): string {
-  return `https://api.maptiler.com/maps/42ef8c6c-ee73-4de7-a73f-f5b7fdcaa831/256/${z}/${x}/${y}${dpr >= 2 ? '@2x' : ''}.png?key=cNjsznbnTUWR75F9V8RY`
-}
-
 
 
 export default function Map() {
@@ -26,12 +25,11 @@ export default function Map() {
   };
 
   return (
-    // Important! Always set the container height explicitly
     <div style={{ height: '100vh', width: '100%' }}>
       <Mapa
-        provider={mapTiler}
-        dprs={[1, 2]} // add this to support hidpi/retina (2x) maps if your provider supports them
-        height={300}
+        provider={maptilerProvider}
+        dprs={[1, 2]} // this provider supports HiDPI tiles
+        height={200}
         defaultCenter={[50.879, 4.6997]}
         defaultZoom={11}
       />
