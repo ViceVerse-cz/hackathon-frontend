@@ -1,5 +1,6 @@
 import { Building } from "../../../../../interfaces/building.interface";
 import "../../../../../assets/gradient.css";
+
 import Overview from "./Overview";
 
 export default function Menu({ building }: { building: Building }) {

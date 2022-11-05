@@ -7,7 +7,7 @@ export default function Building() {
 
     return (
         <div className="z-10 h-[100vh] ml-[5rem] w-[25rem] absolute flex flex-col pt-4 pb-4 justify-start">
-            <Info building={buildingData.building} />
+            <Info building={buildingData} />
             <Menu building={buildingData.building} />
         </div>
     )

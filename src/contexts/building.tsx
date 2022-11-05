@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { BData, Building, BuildingContextData } from "../interfaces/building.interface";
+import { BData, BuildingContextData, Floor } from "../interfaces/building.interface";
 import { api } from "../services/api";
 
 
@@ -13,10 +13,12 @@ interface Props {
 export const BuildingProvider: React.FC<Props> = ({ children }) => {
     const [buildingData, setBuildingData] = useState<BData>({} as BData);
     const [loading, setLoading] = useState(false);
+    const [floorLoading, setFloorLoading] = useState(false);
     const [active, setActive] = useState(false);
+    const [floor, setFloor] = useState<Floor>({} as Floor);
 
 
-    async function getBuilding(id: number) {
+    async function getBuilding(id: String) {
         setActive(true);
         setLoading(true);
         console.log(active);
@@ -27,13 +29,24 @@ export const BuildingProvider: React.FC<Props> = ({ children }) => {
         setLoading(false);
     }
 
+    async function getFloor(id: String) {
+        setFloorLoading(true);
+
+        const response = await api.get(`/api/floor/fetch/${id}`);
+        const data = response.data.data;
+
+        setFloor(data);
+        setFloorLoading(false);
+    }
+
     function clearBuilding() {
         setActive(false);
     }
 
 
+
     return (
-        <BuildingContext.Provider value={{ buildingData, loading, active, getBuilding, setBuildingData, clearBuilding }}>
+        <BuildingContext.Provider value={{ buildingData, floor, loading, floorLoading, active, getFloor, getBuilding, setBuildingData, clearBuilding }}>
             {children}
         </BuildingContext.Provider>
     );

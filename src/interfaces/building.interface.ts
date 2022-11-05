@@ -23,12 +23,16 @@ export interface BData {
 
 export interface BuildingContextData {
     buildingData: BData,
+    floor: Floor,
     active: Boolean,
     loading: Boolean,
-    getBuilding(id: number): Promise<void>,
+    floorLoading: boolean;
+    getBuilding(id: String): Promise<void>,
+    getFloor(id: String): Promise<void>,
     setBuildingData(building: BData): void,
     clearBuilding(): void
 }
+
 
 
 export enum FloorType {
@@ -37,7 +41,29 @@ export enum FloorType {
 };
 
 export interface Floor {
+    _id: String,
     type: FloorType,
     shop: String,
     warehouse: String
+    productCount: number,
+    productMissing: number,
+};
+
+
+export interface Shop {
+    name: String,
+    products: Product[]
+}
+
+
+export interface Product {
+    name: String,
+    description: String,
+    variants: Variant[]
+}
+
+export interface Variant {
+    name: String,
+    price: Number,
+    count: Number
 };
