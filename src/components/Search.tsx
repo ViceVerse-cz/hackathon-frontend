@@ -49,7 +49,7 @@ export const Search = () => {
     }
 
     return (
-        <div>
+        <div className="hidden">
             <div className='fixed top-0 bg-black opacity-90 w-full z-15 h-[100vh]'/>
                 <form 
                     onSubmit={handleForm}
