@@ -18,7 +18,7 @@ export default function Info({ building }: { building: BData }) {
             <div className="flex flex-row justify-start items-start">
                 <div className="mr-3 w-23 h-23">
                     {!loading ?
-                        <img src={'https://via.placeholder.com/150'} alt="logo" className="rounded-lg" />
+                        <img src={`https://avatars.dicebear.com/api/identicon/${building.building.name}.svg`} alt="logo" className="rounded-lg" />
                         :
                         <Loading width="100%" height="100%" />
                     }
@@ -32,9 +32,9 @@ export default function Info({ building }: { building: BData }) {
                         :
                         <>
                             <div className="mt-2" />
-                            <Loading width="6rem" height="1.6rem" />
+                            <Loading width="8rem" height="1.7rem" />
                             <div className="mt-2" />
-                            <Loading width="3.5rem" height="1rem" />
+                            <Loading width="11rem" height="1rem" />
                         </>
                     }
                     <div className="text-sm flex flex-row items-center mt-2">
@@ -59,7 +59,7 @@ export default function Info({ building }: { building: BData }) {
                             :
                             <>
                                 <div className="animate-pulse bg-gray-400 w-3 h-3 rounded-full mr-2" />
-                                <Loading width="3rem" height="1rem" />
+                                <Loading width="4rem" height="1rem" />
                             </>
                         }
                     </div>

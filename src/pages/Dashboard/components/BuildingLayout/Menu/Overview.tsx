@@ -17,6 +17,8 @@ export default function Overview() {
             if (typeof floor.floor.shop.products != null && floor.floor.shop.products.length != 0 && floor.floor.shop.products[0].product != null) return <Product products={floor.floor.shop.products} />
         }
     }
+
+
     return (
         <>
             <div className="flex flex-row justify-start items-start h-1/2">
