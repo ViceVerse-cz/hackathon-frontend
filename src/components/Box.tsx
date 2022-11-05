@@ -1,4 +1,3 @@
-
 interface BoxProps {
     children: React.ReactNode;
     width?: string;
@@ -6,8 +5,6 @@ interface BoxProps {
     color?: string;
     padding?: string;
 }
-
-
 
 export default function Box(props: BoxProps) {
     return (
