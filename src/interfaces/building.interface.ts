@@ -5,6 +5,7 @@ export enum BuildingState {
 };
 
 export interface Building {
+    _id: String,
     name: String,
     state: BuildingState,
     address: String,
@@ -14,6 +15,7 @@ export interface Building {
 }
 
 export interface BData {
+    _id: String,
     building: Building
     productCount: number,
     productMissing: number,

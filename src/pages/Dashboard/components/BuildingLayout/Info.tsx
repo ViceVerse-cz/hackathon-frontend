@@ -79,7 +79,7 @@ export default function Info({ building }: { building: Building }) {
                     }
                 </div>
                 <div className="flex flex-col items-left mr-8">
-                    <h3 className="text-sm font-bold">POČET SKLADU:</h3>
+                    <h3 className="text-sm font-bold">POČET PODLAŽÍ:</h3>
                     {!loading ?
                         <h4 className="text-sm text-gray-300">1331414</h4>
                         :
@@ -87,9 +87,9 @@ export default function Info({ building }: { building: Building }) {
                     }
                 </div>
                 <div className="flex flex-col items-left mr-8">
-                    <h3 className="text-sm font-bold">POČET LIDI:</h3>
+                    <h3 className="text-sm font-bold">ID SKLADU:</h3>
                     {!loading ?
-                        <h4 className="text-sm text-gray-300">1331414</h4>
+                        <h4 className="text-sm text-gray-300 overflow-clip w-20">{building._id}</h4>
                         :
                         <Loading width="rnd" height="1rem" />
                     }
