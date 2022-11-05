@@ -36,9 +36,8 @@ export default function Map() {
     <div style={{ height: '100vh', width: '100%' }}>
       <Mapa
         provider={maptilerProvider}
-        dprs={[1, 2]} // this provider supports HiDPI tiles
+        dprs={[1, 2]}
         defaultCenter={defaultProps}
-        metaWheelZoom={false}
         minZoom={9}
         maxZoom={9}
         defaultZoom={9}
@@ -54,7 +53,6 @@ export default function Map() {
             </Overlay>
           ))
           : <div />}
-        )
       </Mapa>
     </div>
   );

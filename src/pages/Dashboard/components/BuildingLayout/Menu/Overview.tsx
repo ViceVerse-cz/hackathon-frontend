@@ -26,7 +26,7 @@ export default function Overview() {
 
             </div>
             <div className="flex flex-col justify-start items-start mt-5">
-                <h1 className="text-2xl font-black">Aktivity</h1>
+                <h1 className="text-2xl font-black">Produkty</h1>
             </div>
         </>
     )
