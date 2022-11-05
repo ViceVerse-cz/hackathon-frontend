@@ -61,7 +61,7 @@ function Separator(props: Float16BufferAttributeProps) {
 
 export default () => {
     const [active, setActive] = useState<Number>(0);
-    const { building, loading } = useBuilding();
+    const { buildingData, loading } = useBuilding();
 
 
 
@@ -70,7 +70,7 @@ export default () => {
             <pointLight position={[0, 0, 5]} />
 
             {!loading ?
-                building.floors.map((_, i) => (
+                buildingData.building.floors.map((_, i) => (
                     <>
                         <Box
                             key={i}

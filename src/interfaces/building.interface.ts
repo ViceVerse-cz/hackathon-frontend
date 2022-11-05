@@ -13,12 +13,18 @@ export interface Building {
     long: Number
 }
 
+export interface BData {
+    building: Building
+    productCount: number,
+    productMissing: number,
+}
+
 export interface BuildingContextData {
-    building: Building,
+    buildingData: BData,
     active: Boolean,
     loading: Boolean,
     getBuilding(id: number): Promise<void>,
-    setBuilding(building: Building): void,
+    setBuildingData(building: BData): void,
     clearBuilding(): void
 }
 

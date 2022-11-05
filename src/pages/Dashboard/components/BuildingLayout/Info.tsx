@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 export default function Info({ building }: { building: Building }) {
     const { loading } = useBuilding();
     return (
-        <motion.div 
+        <motion.div
             className="flex flex-col w-auto h-[30%] bg-black rounded-xl mb-5 p-4 text-white gradient"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -31,14 +31,13 @@ export default function Info({ building }: { building: Building }) {
                         </>
                         :
                         <>
-                            <div className="mt-1" />
+                            <div className="mt-2" />
                             <Loading width="6rem" height="1.6rem" />
                             <div className="mt-2" />
                             <Loading width="3.5rem" height="1rem" />
                         </>
                     }
-
-                    <div className="text-sm flex flex-row items-center mt-4">
+                    <div className="text-sm flex flex-row items-center mt-2">
                         {!loading ?
                             building.state == 1 ?
                                 <div className="flex flex-row items-center">

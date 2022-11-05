@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { Building, BuildingContextData } from "../interfaces/building.interface";
+import { createContext, useContext, useState } from "react";
+import { BData, Building, BuildingContextData } from "../interfaces/building.interface";
 import { api } from "../services/api";
 
 
@@ -9,8 +9,9 @@ interface Props {
     children: React.ReactNode;
 }
 
+
 export const BuildingProvider: React.FC<Props> = ({ children }) => {
-    const [building, setBuilding] = useState<Building>({} as Building);
+    const [buildingData, setBuildingData] = useState<BData>({} as BData);
     const [loading, setLoading] = useState(false);
     const [active, setActive] = useState(false);
 
@@ -22,16 +23,17 @@ export const BuildingProvider: React.FC<Props> = ({ children }) => {
         const response = await api.get(`/api/building/fetch/${id}`);
         const data = response.data.data;
 
-        setBuilding(data.building);
+        setBuildingData(data);
         setLoading(false);
     }
+
     function clearBuilding() {
         setActive(false);
     }
 
 
     return (
-        <BuildingContext.Provider value={{ building, loading, active, getBuilding, setBuilding, clearBuilding }}>
+        <BuildingContext.Provider value={{ buildingData, loading, active, getBuilding, setBuildingData, clearBuilding }}>
             {children}
         </BuildingContext.Provider>
     );
