@@ -1,6 +1,5 @@
 import { useBuilding } from '../../contexts/building';
 import Building from './components/BuildingLayout';
-import { Search } from '../../components/Search';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/auth';
 import Navbar from './components/Navbar';
@@ -18,7 +17,6 @@ export default function Dashboard() {
 
     return (
         <div className='flex flex-row h-screen'>
-                        <Search/>
             <Navbar user={user} handleSingOut={signOut} />
             {active ? <Building /> : <></>}
 
