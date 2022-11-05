@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { ProductI } from "../../../../../components/Search"
+import { ProductI } from "../../Search"
 
 interface IProps {
     products: [{
@@ -15,7 +14,7 @@ const Product = ({ products }: IProps) => {
             {products.map((product, index) => (
                 <div className="w-full p-5 inline-flex">
                     <div>
-                        <img src="https://via.placeholder.com/150" className="h-[70px] w-[100px] rounded-lg"/>
+                        <img src="https://via.placeholder.com/150" className="h-[70px] w-[70px] rounded-lg" />
                     </div>
 
                     <div className="ml-5">

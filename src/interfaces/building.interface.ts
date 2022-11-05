@@ -23,7 +23,7 @@ export interface BData {
 
 export interface BuildingContextData {
     buildingData: BData,
-    floor: Floor,
+    floor: FloorBody,
     active: Boolean,
     loading: Boolean,
     floorLoading: boolean;
@@ -45,10 +45,13 @@ export interface Floor {
     type: FloorType,
     shop: any,
     warehouse: any,
-    productCount: number,
-    productMissing: number,
 };
 
+export interface FloorBody {
+    floor: Floor,
+    productCount: number,
+    productMissing: number,
+}
 
 export interface Shop {
     name: String,

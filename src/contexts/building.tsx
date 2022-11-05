@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { BData, BuildingContextData, Floor } from "../interfaces/building.interface";
+import { BData, BuildingContextData, Floor, FloorBody } from "../interfaces/building.interface";
 import { api } from "../services/api";
 
 
@@ -15,7 +15,7 @@ export const BuildingProvider: React.FC<Props> = ({ children }) => {
     const [loading, setLoading] = useState(false);
     const [floorLoading, setFloorLoading] = useState(false);
     const [active, setActive] = useState(false);
-    const [floor, setFloor] = useState<Floor>({} as Floor);
+    const [floor, setFloor] = useState<FloorBody>({} as FloorBody);
 
 
     async function getBuilding(id: String) {

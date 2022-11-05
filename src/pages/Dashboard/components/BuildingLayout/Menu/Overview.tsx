@@ -1,11 +1,20 @@
 import Loading from "../../../../../components/Loading";
 import { useBuilding } from "../../../../../contexts/building";
+import { FloorType } from "../../../../../interfaces/building.interface";
 import Interactive from "./Interactive";
 import Product from "./Product";
 
 export default function Overview() {
     const { floor, floorLoading } = useBuilding();
 
+    const products = () => {
+        if (floor.floor.type === FloorType.WAREHOUSE) {
+            if (typeof floor.floor.warehouse.products != null) return <Product products={floor.floor.warehouse.products} />
+
+        } else if (floor.floor.type === FloorType.SHOP) {
+            if (typeof floor.floor.shop.products != null) return <Product products={floor.floor.shop.products} />
+        }
+    }
     return (
         <>
             <div className="flex flex-row justify-start items-start h-1/2">
@@ -27,15 +36,18 @@ export default function Overview() {
 
             </div>
             <div className="flex flex-col justify-start items-start mt-5">
-                <h1 className="text-2xl font-black">Produkty</h1>
+                <h1 className="text-2xl font-black overflow-hidden">Produkty</h1>
                 {
                     !floorLoading && typeof floor !== 'undefined'
-                    ? <Product products={
-                        (floor as any).floor.type == "Warehouse"
-                        ? (floor as any).floor.warehouse.products
-                        : (floor as any).floor.shop.products
-                    }/>
-                    : "nacita se"           
+                        ? products()
+                        : <div className="mt-2 flex flex-row">
+                            <Loading width="5rem" height="5rem" />
+                            <div className="ml-2 flex flex-col">
+                                <Loading width="5rem" height="1.2rem" />
+                                <div className="mt-2" />
+                                <Loading width="8rem" height="1.2rem" />
+                            </div>
+                        </div>
                 }
             </div>
         </>
