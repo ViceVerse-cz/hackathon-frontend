@@ -3,6 +3,7 @@ import Building from './components/BuildingLayout';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/auth';
 import Navbar from './components/Navbar';
+import QrCode from 'react-qr-code';
 import Map from './components/Map';
 
 export default function Dashboard() {

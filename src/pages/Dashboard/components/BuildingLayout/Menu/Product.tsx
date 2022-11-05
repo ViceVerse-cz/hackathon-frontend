@@ -1,4 +1,5 @@
 import { ProductI } from "../../Search"
+import QrCode from 'react-qr-code';
 
 interface IProps {
     products: [{
@@ -25,6 +26,12 @@ const Product = ({ products }: IProps) => {
                     <div className="ml-5">
                         <h1>{product.product.name}</h1>
                         <p className="text-gray-400">{product.product.description}</p>
+                        <QrCode 
+                            value={"fkjdhf"}
+                            size={256}
+                            style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                            viewBox={`0 0 256 256`}
+                        />
                     </div>
                 </div>
             ))}

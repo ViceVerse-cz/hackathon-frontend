@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { api } from "../../../services/api";
 import { FormEvent, useState } from "react";
+import QrCode from 'react-qr-code';
 
 export interface ProductI {
     product: {
@@ -17,7 +18,7 @@ const SearchResult = ({ product }: ProductI) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="w-fit inline-flex m-3 hover:bg-dark-800 p-3 rounded-lg hover:cursor-pointer items-start justify-start"
+            className="w-fit inline-flex m-3 hover:bg-slate-800 p-3 rounded-lg hover:cursor-pointer items-start justify-start"
         >
             <div>
                 <img
@@ -29,6 +30,16 @@ const SearchResult = ({ product }: ProductI) => {
             <div className="ml-4">
                 <p className="text-white">{product.name}</p>
                 <p className="text-gray-400">{product.description}</p>
+            </div>
+
+            <div className="w-full">
+                <div className="w-[100px] h-[100px] opacity-6 hover:opacity-100 text-right float-right border-blue border-2 border-solid">
+                <QrCode 
+                    value={product._id.toString()}
+                    size={100}
+                    style={{ height: "100px", maxWidth: "100px", width: "100px" }}
+                />
+                </div>
             </div>
         </motion.div>
     )
@@ -72,7 +83,7 @@ export const Search = () => {
             {
                 products.length > 0 ?
                     <motion.div
-                        className='bg-black p-3 rounded-xl flex flex-col mt-5'
+                        className='bg-gray-900 p-3 rounded-xl flex flex-col mt-5'
                     >
                         {
                             products.map((product, index) => {
