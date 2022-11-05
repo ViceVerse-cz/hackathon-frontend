@@ -83,7 +83,7 @@ export const Search = () => {
             {
                 products.length > 0 ?
                     <motion.div
-                        className='bg-black p-3 rounded-xl flex flex-col mt-5'
+                        className='bg-black p-3 rounded-xl flex flex-col mt-5 h-150 overflow-scroll'
                     >
                         {
                             products.map((product, index) => {
