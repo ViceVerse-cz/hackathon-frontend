@@ -1,4 +1,4 @@
-import { Building } from "../../../../interfaces/building.interface";
+import { BData, } from "../../../../interfaces/building.interface";
 import "../../../../assets/gradient.css";
 import { Pen } from "react-bootstrap-icons";
 import { useBuilding } from "../../../../contexts/building";
@@ -6,7 +6,7 @@ import Loading from "../../../../components/Loading";
 import { motion } from "framer-motion";
 
 
-export default function Info({ building }: { building: Building }) {
+export default function Info({ building }: { building: BData }) {
     const { loading } = useBuilding();
     return (
         <motion.div
@@ -26,8 +26,8 @@ export default function Info({ building }: { building: Building }) {
                 <div className="flex flex-col">
                     {!loading ?
                         <>
-                            <h2 className="font-black text-2xl">{building.name}</h2>
-                            <h3 className="text-md text-gray-100">{building.address}</h3>
+                            <h2 className="font-black text-2xl">{building.building.name}</h2>
+                            <h3 className="text-md text-gray-100">{building.building.address}</h3>
                         </>
                         :
                         <>
@@ -39,17 +39,17 @@ export default function Info({ building }: { building: Building }) {
                     }
                     <div className="text-sm flex flex-row items-center mt-2">
                         {!loading ?
-                            building.state == 1 ?
+                            building.building.state == 1 ?
                                 <div className="flex flex-row items-center">
                                     <div className="w-3 h-3 rounded-full bg-green-500 mr-2" />
                                     <p className="text-sm">Otevřeno</p>
                                 </div>
-                                : building.state == 2 ?
+                                : building.building.state == 2 ?
                                     <div className="flex flex-row items-center">
                                         <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2" />
                                         <p className="text-sm">Zavřeno</p>
                                     </div>
-                                    : building.state == 3 ?
+                                    : building.building.state == 3 ?
                                         <div className="flex flex-row items-center">
                                             <div className="w-3 h-3 rounded-full bg-red-500 mr-2" />
                                             <p className="text-sm">Neaktivní</p>
@@ -73,7 +73,7 @@ export default function Info({ building }: { building: Building }) {
                 <div className="flex flex-col items-left mr-8">
                     <h3 className="text-sm font-bold">POČET BOT:</h3>
                     {!loading ?
-                        <h4 className="text-sm text-gray-300">1331414</h4>
+                        <h4 className="text-sm text-gray-300">{building.productCount}</h4>
                         :
                         <Loading width="rnd" height="1rem" />
                     }
@@ -81,7 +81,7 @@ export default function Info({ building }: { building: Building }) {
                 <div className="flex flex-col items-left mr-8">
                     <h3 className="text-sm font-bold">POČET PODLAŽÍ:</h3>
                     {!loading ?
-                        <h4 className="text-sm text-gray-300">1331414</h4>
+                        <h4 className="text-sm text-gray-300">{building.building.floors.length}</h4>
                         :
                         <Loading width="rnd" height="1rem" />
                     }
@@ -89,7 +89,7 @@ export default function Info({ building }: { building: Building }) {
                 <div className="flex flex-col items-left mr-8">
                     <h3 className="text-sm font-bold">ID SKLADU:</h3>
                     {!loading ?
-                        <h4 className="text-sm text-gray-300 overflow-clip w-20">{building._id}</h4>
+                        <h4 className="text-sm text-gray-300 overflow-clip w-20">{building.building._id}</h4>
                         :
                         <Loading width="rnd" height="1rem" />
                     }

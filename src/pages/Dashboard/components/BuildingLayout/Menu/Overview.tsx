@@ -3,17 +3,18 @@ import { useBuilding } from "../../../../../contexts/building";
 import Interactive from "./Interactive";
 
 export default function Overview() {
-    const { buildingData, loading } = useBuilding();
+    const { floor, floorLoading } = useBuilding();
+
     return (
         <>
             <div className="flex flex-row justify-start items-start h-1/2">
                 <div className="flex-1 flex-col justify-start items-start h-1/2">
                     <div className="w-full h-4/5 bg-black rounded-xl p-4 mb-5 flex justify-center flex-col">
-                        {!loading ? <h1 className="text-2xl font-black">{buildingData.productCount}</h1> : <Loading width="6rem" height="1.3rem" />}
+                        {!floorLoading ? <h1 className="text-2xl font-black">{floor.productCount}</h1> : <Loading width="6rem" height="1.3rem" />}
                         <h3 className="text-md font-medium">Produktů</h3>
                     </div>
                     <div className="h-full bg-black rounded-xl p-4 flex justify-center flex-col">
-                        {!loading ? <h1 className="text-2xl font-black">{buildingData.productMissing}</h1> : <Loading width="5rem" height="1.3rem" />}
+                        {!floorLoading ? <h1 className="text-2xl font-black">{floor.productMissing}</h1> : <Loading width="5rem" height="1.3rem" />}
                         <h3 className="text-md font-medium">Nedostupných</h3>
                     </div>
                 </div>

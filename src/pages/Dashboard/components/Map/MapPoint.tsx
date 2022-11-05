@@ -1,19 +1,20 @@
 import { useBuilding } from "../../../../contexts/building";
 import { Building } from "react-bootstrap-icons";
 import { motion } from 'framer-motion';
-import { BuildingState } from "../../../../interfaces/building.interface";
+import { BuildingState, Floor } from "../../../../interfaces/building.interface";
 
 interface MapPointProps {
-    id: number;
+    id: String;
+    floor: Floor[];
     state: BuildingState
 }
 
-export default function MapPoint({ id, state }: MapPointProps) {
-    const { getBuilding } = useBuilding();
+export default function MapPoint({ id, state, floor }: MapPointProps) {
+    const { getBuilding, getFloor } = useBuilding();
 
     return (
         <motion.div
-            onClick={() => getBuilding(id)}
+            onClick={() => { getBuilding(id); getFloor(floor[0]._id) }}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5 }}

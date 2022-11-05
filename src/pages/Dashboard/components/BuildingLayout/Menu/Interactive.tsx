@@ -60,8 +60,9 @@ function Separator(props: Float16BufferAttributeProps) {
 }
 
 export default () => {
-    const [active, setActive] = useState<Number>(0);
-    const { buildingData, loading } = useBuilding();
+    const [active, setActive] = useState<number>(0);
+
+    const { buildingData, loading, getFloor } = useBuilding();
 
 
 
@@ -70,17 +71,19 @@ export default () => {
             <pointLight position={[0, 0, 5]} />
 
             {!loading ?
-                buildingData.building.floors.map((_, i) => (
-                    <>
-                        <Box
-                            key={i}
-                            active={active == i}
-                            position={[0, i - 2.51, 0]}
-                            onSelected={() => setActive(i)}
-                        />
-                        <Separator position={[0, i - 2, 0]} />
-                    </>
-                ))
+                <group>
+                    {buildingData.building.floors.map((floor, i) => (
+                        <>
+                            <Box
+                                key={i}
+                                active={active == i}
+                                position={[0, i - 2.51, 0]}
+                                onSelected={() => { setActive(i); getFloor(floor._id) }}
+                            />
+                            <Separator position={[0, i - 2, 0]} />
+                        </>
+                    ))}
+                </group>
                 : null
 
             }
