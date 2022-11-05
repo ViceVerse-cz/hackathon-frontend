@@ -1,9 +1,10 @@
 import { User } from "../../../interfaces/user.interface";
 import { 
     BoxArrowRight, 
-    Search, 
+    Search as SearchIcon, 
     PlusCircleFill 
 } from "react-bootstrap-icons";
+import { useState } from "react";
 
 interface NavbarProps {
     user: User | null;
@@ -12,6 +13,8 @@ interface NavbarProps {
 
 
 export default function Navbar({ user, handleSingOut }: NavbarProps) {
+    const [searchOpen, setSearchOpen] = useState<Boolean>(false);
+    const [panelOpen, setPanelOpen] = useState<Boolean>(false);
 
     return (
         <div 
@@ -26,11 +29,19 @@ export default function Navbar({ user, handleSingOut }: NavbarProps) {
 
                 <div className="text-center mt-10">
                     <button className="bg-[#160F33] p-4 transition-all ease-in-out rounded-2xl h-[60px] w-[60px] hover:rounded-lg"> 
-                        <Search size={28} color="white"/>
+                        <SearchIcon 
+                            onClick={() => setSearchOpen(!searchOpen)}
+                            size={28} 
+                            color="white"
+                        />
                     </button> 
 
                     <button className="bg-[#160F33] mt-4 transition-all ease-in-out p-4 rounded-2xl h-[60px] w-[60px] hover:rounded-lg">
-                        <PlusCircleFill size={28} color="white"/>
+                        <PlusCircleFill 
+                            onClick={() => setPanelOpen(!panelOpen)}
+                            size={28} 
+                            color="white"
+                        />
                     </button>
                 </div>
             </div>
