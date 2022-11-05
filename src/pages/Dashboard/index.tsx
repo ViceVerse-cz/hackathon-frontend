@@ -1,9 +1,10 @@
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../contexts/auth';
 import { useBuilding } from '../../contexts/building';
 import Building from './components/BuildingLayout';
-import Map from './components/Map';
+import { Search } from '../../components/Search';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/auth';
 import Navbar from './components/Navbar';
+import Map from './components/Map';
 
 export default function Dashboard() {
     const history = useNavigate();
@@ -17,6 +18,7 @@ export default function Dashboard() {
 
     return (
         <div className='flex flex-row h-screen'>
+                        <Search/>
             <Navbar user={user} handleSingOut={signOut} />
             {active ? <Building /> : <></>}
 

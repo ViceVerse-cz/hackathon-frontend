@@ -1,5 +1,4 @@
 import { Building } from "../../../../../interfaces/building.interface";
-import Interactive from "./Interactive";
 import Overview from "./Overview";
 
 export default function Menu({ building }: { building: Building }) {
