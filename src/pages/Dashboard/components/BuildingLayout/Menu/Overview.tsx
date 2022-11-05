@@ -1,4 +1,4 @@
-import { ArrowDownLeft, ArrowDownUp } from "react-bootstrap-icons";
+import { ArrowDownUp } from "react-bootstrap-icons";
 import Loading from "../../../../../components/Loading";
 import { useBuilding } from "../../../../../contexts/building";
 import { FloorType } from "../../../../../interfaces/building.interface";
@@ -13,7 +13,6 @@ export default function Overview() {
 
         if (floor.floor.type === FloorType.WAREHOUSE) {
             if (typeof floor.floor.warehouse.products != null && floor.floor.warehouse.products.length != 0 && floor.floor.warehouse.products[0].product != null) return <Product products={floor.floor.warehouse.products} />
-
         } else if (floor.floor.type === FloorType.SHOP) {
             if (typeof floor.floor.shop.products != null && floor.floor.shop.products.length != 0 && floor.floor.shop.products[0].product != null) return <Product products={floor.floor.shop.products} />
         }

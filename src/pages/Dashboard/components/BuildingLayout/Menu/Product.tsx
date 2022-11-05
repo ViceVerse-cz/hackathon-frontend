@@ -2,7 +2,12 @@ import { ProductI } from "../../Search"
 
 interface IProps {
     products: [{
-        product: ProductI,
+        product: {
+            _id: String,
+            name: String,
+            description: String,
+
+        },
         quantity: Number,
         _id: String
     }]

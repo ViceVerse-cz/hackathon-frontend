@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import {
     BoxArrowRight,
     Search as SearchIcon,
-    PlusCircle
+    PlusCircle,
+    XLg
 } from "react-bootstrap-icons";
 import { useState } from "react";
 import { Search } from "./Search";
@@ -40,8 +41,10 @@ export default function Navbar({ user, handleSingOut }: NavbarProps) {
                     </button>
                     {searchOpen && (
                         <>
+                            <div className='bg-gray-800 opacity-80 top-0 left-0 h-[100vh] w-[100vw] absolute z-100' />
+                            <XLg size={25} color="white" className="z-10000 absolute top-0 right-0 m-10 cursor-pointer" onClick={() => setSearchOpen(!searchOpen)} />
+
                             <Search />
-                            <div className='bg-gray-800 opacity-80 top-0 left-0 h-[100vh] w-[100vw] absolute z-20' onClick={() => setSearchOpen(false)} />
                         </>
                     )}
 

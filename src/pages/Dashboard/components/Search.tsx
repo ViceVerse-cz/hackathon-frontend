@@ -3,16 +3,15 @@ import { api } from "../../../services/api";
 import { FormEvent, useState } from "react";
 
 export interface ProductI {
-    _id: String,
-    name: String,
-    description: String,
+    product: {
+        _id: String,
+        name: String,
+        description: String,
+    }
 }
 
-interface IProps {
-    product: ProductI
-}
 
-const SearchResult = ({ product }: IProps) => {
+const SearchResult = ({ product }: ProductI) => {
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -79,7 +78,7 @@ export const Search = () => {
                             products.map((product, index) => {
                                 return (
                                     <SearchResult
-                                        product={product}
+                                        product={product.product}
                                         key={index}
                                     />
                                 )
