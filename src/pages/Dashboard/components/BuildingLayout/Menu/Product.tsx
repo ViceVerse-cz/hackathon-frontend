@@ -14,7 +14,7 @@ const Product = ({ products }: IProps) => {
             {products.map((product, index) => (
                 <div className="w-full p-5 inline-flex">
                     <div>
-                        <img src="https://via.placeholder.com/150" className="h-[70px] w-[70px] rounded-lg" />
+                        <img src="https://via.placeholder.com/150" className="h-20 w-24 rounded-lg" />
                     </div>
 
                     <div className="ml-5">

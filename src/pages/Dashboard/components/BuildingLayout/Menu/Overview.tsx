@@ -1,3 +1,4 @@
+import { ArrowDownLeft, ArrowDownUp } from "react-bootstrap-icons";
 import Loading from "../../../../../components/Loading";
 import { useBuilding } from "../../../../../contexts/building";
 import { FloorType } from "../../../../../interfaces/building.interface";
@@ -8,11 +9,13 @@ export default function Overview() {
     const { floor, floorLoading } = useBuilding();
 
     const products = () => {
+        console.log(floor);
+
         if (floor.floor.type === FloorType.WAREHOUSE) {
-            if (typeof floor.floor.warehouse.products != null) return <Product products={floor.floor.warehouse.products} />
+            if (typeof floor.floor.warehouse.products != null && floor.floor.warehouse.products.length != 0 && floor.floor.warehouse.products[0].product != null) return <Product products={floor.floor.warehouse.products} />
 
         } else if (floor.floor.type === FloorType.SHOP) {
-            if (typeof floor.floor.shop.products != null) return <Product products={floor.floor.shop.products} />
+            if (typeof floor.floor.shop.products != null && floor.floor.shop.products.length != 0 && floor.floor.shop.products[0].product != null) return <Product products={floor.floor.shop.products} />
         }
     }
     return (
@@ -20,8 +23,14 @@ export default function Overview() {
             <div className="flex flex-row justify-start items-start h-1/2">
                 <div className="flex-1 flex-col justify-start items-start h-1/2">
                     <div className="w-full h-4/5 bg-black rounded-xl p-4 mb-5 flex justify-center flex-col">
-                        {!floorLoading ? <h1 className="text-2xl font-black">{floor.productCount}</h1> : <Loading width="6rem" height="1.3rem" />}
-                        <h3 className="text-md font-medium">Produktů</h3>
+                        <div className="flex flex-row justify-between items-center">
+                            <div className="flex flex-col">
+                                {!floorLoading ? <h1 className="text-2xl font-black">{floor.productCount}</h1> : <Loading width="6rem" height="1.3rem" />}
+                                <h3 className="text-md font-medium">Produktů</h3>
+                            </div>
+                            <ArrowDownUp className="text-green-500" />
+
+                        </div>
                     </div>
                     <div className="h-full bg-black rounded-xl p-4 flex justify-center flex-col">
                         {!floorLoading ? <h1 className="text-2xl font-black">{floor.productMissing}</h1> : <Loading width="5rem" height="1.3rem" />}
@@ -35,8 +44,8 @@ export default function Overview() {
                 </div>
 
             </div>
-            <div className="flex flex-col justify-start items-start mt-5">
-                <h1 className="text-2xl font-black overflow-hidden">Produkty</h1>
+            <div className="flex flex-col justify-start items-start mt-5 overflow-hidden h-50 gra   ">
+                <h1 className="text-2xl font-black ">Produkty</h1>
                 {
                     !floorLoading && typeof floor !== 'undefined'
                         ? products()
