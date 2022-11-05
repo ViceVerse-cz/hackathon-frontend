@@ -1,6 +1,7 @@
 import Loading from "../../../../../components/Loading";
 import { useBuilding } from "../../../../../contexts/building";
 import Interactive from "./Interactive";
+import Product from "./Product";
 
 export default function Overview() {
     const { floor, floorLoading } = useBuilding();
@@ -20,7 +21,6 @@ export default function Overview() {
                 </div>
                 <div className="flex-2 flex-col justify-center items-center w-[45%] h-full ml-5">
                     <div className="p-2 h-full bg-black rounded-xl">
-
                         <Interactive />
                     </div>
                 </div>
@@ -28,6 +28,15 @@ export default function Overview() {
             </div>
             <div className="flex flex-col justify-start items-start mt-5">
                 <h1 className="text-2xl font-black">Produkty</h1>
+                {
+                    !floorLoading && typeof floor !== 'undefined'
+                    ? <Product products={
+                        (floor as any).floor.type == "Warehouse"
+                        ? (floor as any).floor.warehouse.products
+                        : (floor as any).floor.shop.products
+                    }/>
+                    : "nacita se"           
+                }
             </div>
         </>
     )

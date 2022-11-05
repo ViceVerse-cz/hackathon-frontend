@@ -43,8 +43,8 @@ export enum FloorType {
 export interface Floor {
     _id: String,
     type: FloorType,
-    shop: String,
-    warehouse: String
+    shop: any,
+    warehouse: any,
     productCount: number,
     productMissing: number,
 };
