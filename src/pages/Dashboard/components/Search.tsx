@@ -18,18 +18,12 @@ const SearchResult = ({ product }: ProductI) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="w-fit inline-flex m-3 hover:bg-dark-800 p-3 rounded-lg hover:cursor-pointer items-start justify-start"
+            className="w-fit flex flex-row  m-3 hover:bg-dark-800 p-3 rounded-lg hover:cursor-pointer items-start justify-start"
         >
-            <div>
-                <img
-                    src="https://via.placeholder.com/150"
-                    className="h-25 w-25 rounded-lg"
-                />
-            </div>
 
-            <div className="ml-4">
-                <p className="text-white">{product.name}</p>
-                <p className="text-gray-400">{product.description}</p>
+            <div className="w-full  ml-4">
+                <h2 className="font-bold text-md text-white text-left">{product.name}</h2>
+                <h3 className="text-gray-400 text-sm text-left">{product.description}</h3>
             </div>
 
             <div className="w-full">
