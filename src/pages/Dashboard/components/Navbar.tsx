@@ -1,10 +1,8 @@
 import { User } from "../../../interfaces/user.interface";
 
-import { motion } from "framer-motion";
 import {
     BoxArrowRight,
     Search as SearchIcon,
-    PlusCircle,
     XLg
 } from "react-bootstrap-icons";
 import { useState } from "react";
@@ -18,7 +16,6 @@ interface NavbarProps {
 
 export default function Navbar({ user, handleSingOut }: NavbarProps) {
     const [searchOpen, setSearchOpen] = useState<Boolean>(false);
-    const [panelOpen, setPanelOpen] = useState<Boolean>(false);
 
     return (
         <div
@@ -49,13 +46,6 @@ export default function Navbar({ user, handleSingOut }: NavbarProps) {
                     )}
 
 
-                    <button className="mt-4 transition-all ease-in-out p-4 rounded-2xl h-[60px] w-[60px] hover:rounded-lg">
-                        <PlusCircle
-                            onClick={() => setPanelOpen(!panelOpen)}
-                            size={25}
-                            color="white"
-                        />
-                    </button>
                 </div>
             </div>
 
