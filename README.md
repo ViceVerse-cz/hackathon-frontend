@@ -2,6 +2,14 @@
 https://hackathon.lynx.lol
 ![preview](https://user-images.githubusercontent.com/67194087/200188945-cd48af36-2a10-4da5-b75f-d86a2be75c86.png)
 
+**Don't forget to check out other part of our project**
+
+> Frontend: https://github.com/ViceVerse-cz/hackathon-frontend
+
+Backend: https://github.com/ViceVerse-cz/hackathon-backend
+
+Flutter App: https://github.com/AspireOne/hackathon-mobile-app
+
 
 ## Getting Started
 
