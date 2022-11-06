@@ -1,4 +1,7 @@
 # Frontend for Hackathon project
+https://hackathon.lynx.lol
+![preview](https://user-images.githubusercontent.com/67194087/200188945-cd48af36-2a10-4da5-b75f-d86a2be75c86.png)
+
 
 ## Getting Started
 
